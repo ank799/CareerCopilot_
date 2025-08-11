@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareerCopilot - Automated Job Application Platform</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        <!-- Navigation Header -->
+        <nav class="navbar" id="navbar">
+            <div class="container">
+                <div class="navbar-brand">
+                    <h2>CareerCopilot</h2>
+                </div>
+                <div class="navbar-menu" id="navbarMenu">
+                    <div class="navbar-nav" id="navbarNav">
+                        <!-- Navigation items will be populated by JavaScript -->
+                    </div>
+                    <div class="navbar-actions">
+                        <button class="btn btn--outline theme-toggle" id="themeToggle">
+                            <span id="themeIcon">🌙</span>
+                        </button>
+                        <button class="btn btn--primary" id="authButton">Login</button>
+                    </div>
+                </div>
+                <button class="navbar-toggle" id="navbarToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main id="mainContent">
+            <!-- Landing Page -->
+            <div class="page" id="landingPage">
+                <section class="hero">
+                    <div class="container">
+                        <div class="hero-content">
+                            <h1>Automate Your Job Search, Accelerate Your Career</h1>
+                            <p>Let AI handle the repetitive tasks while you focus on what matters - landing your dream job. Apply to hundreds of relevant positions automatically.</p>
+                            <div class="hero-actions">
+                                <button class="btn btn--primary btn--lg" onclick="navigateTo('register')">Start Free Trial</button>
+                                <button class="btn btn--outline btn--lg" onclick="navigateTo('demo')">Watch Demo</button>
+                            </div>
+                        </div>
+                        <div class="hero-image">
+                            <img src="https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/0907bbfcb1e282da882bff745dad5fb4/7ff593fb-e9f3-4234-8334-073860d509d8/184aad95.png" alt="System Architecture" />
+                        </div>
+                    </div>
+                </section>
+
+                <section class="features">
+                    <div class="container">
+                        <h2>Powerful Features for Modern Job Seekers</h2>
+                        <div class="features-grid">
+                            <div class="feature-card">
+                                <div class="feature-icon">🤖</div>
+                                <h3>AI-Powered Applications</h3>
+                                <p>Smart algorithms match you with relevant positions and automatically fill application forms with personalized responses.</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">📊</div>
+                                <h3>Advanced Analytics</h3>
+                                <p>Track your application success rate, response times, and optimize your job search strategy with detailed insights.</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">🎯</div>
+                                <h3>Smart Filtering</h3>
+                                <p>Set precise criteria for salary, location, company size, and remote work options to only apply to your ideal jobs.</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">🔄</div>
+                                <h3>Multi-Platform Integration</h3>
+                                <p>Connect to LinkedIn, Indeed, Glassdoor, and company websites for comprehensive job coverage.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="pricing">
+                    <div class="container">
+                        <h2>Choose Your Plan</h2>
+                        <div class="pricing-grid">
+                            <div class="pricing-card">
+                                <h3>Starter</h3>
+                                <div class="price">$29<span>/month</span></div>
+                                <ul>
+                                    <li>50 applications per month</li>
+                                    <li>Basic analytics</li>
+                                    <li>LinkedIn integration</li>
+                                    <li>Email support</li>
+                                </ul>
+                                <button class="btn btn--outline btn--full-width">Start Free Trial</button>
+                            </div>
+                            <div class="pricing-card pricing-card--featured">
+                                <h3>Professional</h3>
+                                <div class="price">$79<span>/month</span></div>
+                                <ul>
+                                    <li>Unlimited applications</li>
+                                    <li>Advanced analytics</li>
+                                    <li>All platform integrations</li>
+                                    <li>Priority support</li>
+                                    <li>Custom templates</li>
+                                </ul>
+                                <button class="btn btn--primary btn--full-width">Start Free Trial</button>
+                            </div>
+                            <div class="pricing-card">
+                                <h3>Enterprise</h3>
+                                <div class="price">$199<span>/month</span></div>
+                                <ul>
+                                    <li>Everything in Professional</li>
+                                    <li>Team collaboration</li>
+                                    <li>Custom integrations</li>
+                                    <li>Dedicated support</li>
+                                    <li>White-label options</li>
+                                </ul>
+                                <button class="btn btn--outline btn--full-width">Contact Sales</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Login Page -->
+            <div class="page hidden" id="loginPage">
+                <div class="auth-container">
+                    <div class="auth-card">
+                        <h2>Welcome Back</h2>
+                        <p>Sign in to your CareerCopilot account</p>
+                        <form id="loginForm">
+                            <div class="form-group">
+                                <label class="form-label">Email</label>
+                                <input type="email" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Password</label>
+                                <input type="password" class="form-control" required>
+                            </div>
+                            <button type="submit" class="btn btn--primary btn--full-width">Sign In</button>
+                        </form>
+                        <div class="auth-links">
+                            <a href="#" onclick="navigateTo('register')">Don't have an account? Sign up</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Register Page -->
+            <div class="page hidden" id="registerPage">
+                <div class="auth-container">
+                    <div class="auth-card">
+                        <h2>Create Account</h2>
+                        <p>Start your automated job search journey</p>
+                        <form id="registerForm">
+                            <div class="form-group">
+                                <label class="form-label">Full Name</label>
+                                <input type="text" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Email</label>
+                                <input type="email" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Password</label>
+                                <input type="password" class="form-control" required>
+                            </div>
+                            <button type="submit" class="btn btn--primary btn--full-width">Create Account</button>
+                        </form>
+                        <div class="auth-links">
+                            <a href="#" onclick="navigateTo('login')">Already have an account? Sign in</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dashboard Page -->
+            <div class="page hidden" id="dashboardPage">
+                <div class="container">
+                    <div class="dashboard-header">
+                        <h1>Dashboard</h1>
+                        <p>Overview of your job search activity</p>
+                    </div>
+
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <h3 id="totalApplications">47</h3>
+                            <p>Total Applications</p>
+                            <span class="stat-change positive">+8 this week</span>
+                        </div>
+                        <div class="stat-card">
+                            <h3 id="responsesReceived">12</h3>
+                            <p>Responses Received</p>
+                            <span class="stat-change positive">+3 this week</span>
+                        </div>
+                        <div class="stat-card">
+                            <h3 id="interviewsScheduled">3</h3>
+                            <p>Interviews Scheduled</p>
+                            <span class="stat-change positive">+1 this week</span>
+                        </div>
+                        <div class="stat-card">
+                            <h3 id="successRate">25.5%</h3>
+                            <p>Success Rate</p>
+                            <span class="stat-change neutral">Same as last week</span>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-content">
+                        <div class="dashboard-section">
+                            <h2>Recent Activity</h2>
+                            <div class="activity-feed" id="activityFeed">
+                                <!-- Activity items will be populated by JavaScript -->
+                            </div>
+                        </div>
+
+                        <div class="dashboard-section">
+                            <h2>Quick Actions</h2>
+                            <div class="quick-actions">
+                                <button class="btn btn--primary" onclick="navigateTo('jobs')">Browse Jobs</button>
+                                <button class="btn btn--outline" onclick="navigateTo('applications')">View Applications</button>
+                                <button class="btn btn--outline" onclick="navigateTo('automation')">Automation Settings</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Setup Page -->
+            <div class="page hidden" id="profilePage">
+                <div class="container">
+                    <div class="profile-header">
+                        <h1>Profile Setup</h1>
+                        <p>Complete your profile to get better job matches</p>
+                    </div>
+
+                    <form id="profileForm" class="profile-form">
+                        <div class="form-section">
+                            <h3>Personal Information</h3>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label class="form-label">First Name</label>
+                                    <input type="text" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Last Name</label>
+                                    <input type="text" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Phone</label>
+                                    <input type="tel" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Location</label>
+                                    <input type="text" class="form-control" placeholder="City, State">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h3>Experience & Skills</h3>
+                            <div class="form-group">
+                                <label class="form-label">Years of Experience</label>
+                                <select class="form-control">
+                                    <option value="">Select experience level</option>
+                                    <option value="0-1">0-1 years</option>
+                                    <option value="2-5">2-5 years</option>
+                                    <option value="5-10">5-10 years</option>
+                                    <option value="10+">10+ years</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Skills (comma-separated)</label>
+                                <textarea class="form-control" placeholder="JavaScript, React, Node.js, Python..."></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h3>Job Preferences</h3>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label class="form-label">Desired Salary Range</label>
+                                    <select class="form-control">
+                                        <option value="">Select range</option>
+                                        <option value="40-60k">$40,000 - $60,000</option>
+                                        <option value="60-80k">$60,000 - $80,000</option>
+                                        <option value="80-100k">$80,000 - $100,000</option>
+                                        <option value="100-150k">$100,000 - $150,000</option>
+                                        <option value="150k+">$150,000+</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Work Type</label>
+                                    <select class="form-control">
+                                        <option value="remote">Remote Only</option>
+                                        <option value="hybrid">Hybrid</option>
+                                        <option value="onsite">On-site</option>
+                                        <option value="any">Any</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn--primary">Save Profile</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Jobs Page -->
+            <div class="page hidden" id="jobsPage">
+                <div class="container">
+                    <div class="jobs-header">
+                        <h1>Job Search</h1>
+                        <p>Find and apply to relevant positions</p>
+                    </div>
+
+                    <div class="search-filters">
+                        <div class="search-bar">
+                            <input type="text" class="form-control" placeholder="Search job titles, companies, or keywords..." id="jobSearchInput">
+                            <button class="btn btn--primary">Search</button>
+                        </div>
+                        <div class="filter-row">
+                            <select class="form-control" id="locationFilter">
+                                <option value="">All Locations</option>
+                                <option value="remote">Remote</option>
+                                <option value="san-francisco">San Francisco</option>
+                                <option value="new-york">New York</option>
+                                <option value="austin">Austin</option>
+                                <option value="seattle">Seattle</option>
+                            </select>
+                            <select class="form-control" id="salaryFilter">
+                                <option value="">All Salaries</option>
+                                <option value="60-80k">$60K - $80K</option>
+                                <option value="80-100k">$80K - $100K</option>
+                                <option value="100-120k">$100K - $120K</option>
+                                <option value="120k+">$120K+</option>
+                            </select>
+                            <select class="form-control" id="typeFilter">
+                                <option value="">All Types</option>
+                                <option value="full-time">Full-time</option>
+                                <option value="contract">Contract</option>
+                                <option value="part-time">Part-time</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="jobs-list" id="jobsList">
+                        <!-- Jobs will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Applications Page -->
+            <div class="page hidden" id="applicationsPage">
+                <div class="container">
+                    <div class="applications-header">
+                        <h1>My Applications</h1>
+                        <p>Track the status of all your job applications</p>
+                    </div>
+
+                    <div class="applications-filters">
+                        <select class="form-control" id="statusFilter">
+                            <option value="">All Statuses</option>
+                            <option value="applied">Applied</option>
+                            <option value="viewed">Viewed</option>
+                            <option value="interview">Interview Scheduled</option>
+                            <option value="rejected">Rejected</option>
+                        </select>
+                        <input type="text" class="form-control" placeholder="Search applications..." id="applicationSearchInput">
+                    </div>
+
+                    <div class="applications-table" id="applicationsTable">
+                        <!-- Applications will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Automation Settings Page -->
+            <div class="page hidden" id="automationPage">
+                <div class="container">
+                    <div class="automation-header">
+                        <h1>Automation Settings</h1>
+                        <p>Configure how your job applications are automated</p>
+                    </div>
+
+                    <form id="automationForm" class="automation-form">
+                        <div class="settings-section">
+                            <h3>General Settings</h3>
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>Enable Automation</h4>
+                                    <p>Automatically apply to jobs that match your criteria</p>
+                                </div>
+                                <label class="toggle">
+                                    <input type="checkbox" id="automationEnabled" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Daily Application Limit</label>
+                                <select class="form-control" id="dailyLimit">
+                                    <option value="5">5 applications</option>
+                                    <option value="10" selected>10 applications</option>
+                                    <option value="20">20 applications</option>
+                                    <option value="50">50 applications</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="settings-section">
+                            <h3>Platform Settings</h3>
+                            <div class="platform-toggles">
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <h4>LinkedIn</h4>
+                                        <p>Apply to jobs on LinkedIn</p>
+                                    </div>
+                                    <label class="toggle">
+                                        <input type="checkbox" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <h4>Indeed</h4>
+                                        <p>Apply to jobs on Indeed</p>
+                                    </div>
+                                    <label class="toggle">
+                                        <input type="checkbox" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <h4>Company Websites</h4>
+                                        <p>Apply directly on company career pages</p>
+                                    </div>
+                                    <label class="toggle">
+                                        <input type="checkbox" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="settings-section">
+                            <h3>Quality & Safety</h3>
+                            <div class="form-group">
+                                <label class="form-label">Quality Threshold (0-100)</label>
+                                <input type="range" min="0" max="100" value="70" class="range-slider" id="qualityThreshold">
+                                <div class="range-value">70%</div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Active Hours</label>
+                                <select class="form-control">
+                                    <option value="9-17" selected>9:00 AM - 5:00 PM</option>
+                                    <option value="8-18">8:00 AM - 6:00 PM</option>
+                                    <option value="24h">24 Hours</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn--primary">Save Settings</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Analytics Page -->
+            <div class="page hidden" id="analyticsPage">
+                <div class="container">
+                    <div class="analytics-header">
+                        <h1>Analytics & Reports</h1>
+                        <p>Insights into your job search performance</p>
+                    </div>
+
+                    <div class="analytics-content">
+                        <div class="chart-container">
+                            <h3>Application Success Rate</h3>
+                            <canvas id="successChart" style="position: relative; height: 400px;"></canvas>
+                        </div>
+
+                        <div class="insights-grid">
+                            <div class="insight-card">
+                                <h4>Best Performing Day</h4>
+                                <p class="metric">Tuesday</p>
+                                <span class="metric-desc">Highest response rate</span>
+                            </div>
+                            <div class="insight-card">
+                                <h4>Top Industry</h4>
+                                <p class="metric">Technology</p>
+                                <span class="metric-desc">65% of applications</span>
+                            </div>
+                            <div class="insight-card">
+                                <h4>Average Response Time</h4>
+                                <p class="metric">3.2 days</p>
+                                <span class="metric-desc">From application to reply</span>
+                            </div>
+                            <div class="insight-card">
+                                <h4>Most Active Platform</h4>
+                                <p class="metric">LinkedIn</p>
+                                <span class="metric-desc">78% of applications</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Page -->
+            <div class="page hidden" id="settingsPage">
+                <div class="container">
+                    <div class="settings-header">
+                        <h1>Settings</h1>
+                        <p>Manage your account preferences</p>
+                    </div>
+
+                    <div class="settings-content">
+                        <div class="settings-section">
+                            <h3>Account Settings</h3>
+                            <div class="form-group">
+                                <label class="form-label">Email Address</label>
+                                <input type="email" class="form-control" value="user@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Password</label>
+                                <button class="btn btn--outline">Change Password</button>
+                            </div>
+                        </div>
+
+                        <div class="settings-section">
+                            <h3>Notification Preferences</h3>
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>Email Notifications</h4>
+                                    <p>Receive updates about applications and responses</p>
+                                </div>
+                                <label class="toggle">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="settings-section">
+                            <h3>Data & Privacy</h3>
+                            <button class="btn btn--outline">Export Data</button>
+                            <button class="btn btn--outline btn--error">Delete Account</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <p>&copy; 2025 CareerCopilot. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
